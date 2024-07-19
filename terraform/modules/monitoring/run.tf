@@ -26,11 +26,15 @@ resource "google_cloud_run_v2_job" "detector" {
   }
 }
 
-resource "google_cloud_run_v2_job_iam_member" "invoker_can_invoke_run" {
-  for_each = {
-    log_crawler = google_cloud_run_v2_job.crawler
-    detector    = google_cloud_run_v2_job.detector
+locals {
+  run_jobs = {
+    crawler  = google_cloud_run_v2_job.crawler
+    detector = google_cloud_run_v2_job.detector
   }
+}
+
+resource "google_cloud_run_v2_job_iam_member" "invoker_can_invoke_run" {
+  for_each = local.run_jobs
 
   name     = each.value.name
   location = each.value.location
@@ -39,10 +43,7 @@ resource "google_cloud_run_v2_job_iam_member" "invoker_can_invoke_run" {
 }
 
 resource "google_cloud_run_v2_job_iam_member" "owner_can_invoke_run" {
-  for_each = {
-    log_crawler = google_cloud_run_v2_job.crawler
-    detector    = google_cloud_run_v2_job.detector
-  }
+  for_each = local.run_jobs
 
   name     = each.value.name
   location = each.value.location
