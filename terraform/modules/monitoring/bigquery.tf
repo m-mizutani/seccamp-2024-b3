@@ -30,11 +30,11 @@ resource "google_bigquery_table" "logs" {
   {
     "name": "target",
     "type": "STRING",
-    "nullable": true
+    "mode": "NULLABLE"
   },
   {
     "name": "success",
-    "type": "BOOL"
+    "type": "BOOLEAN"
   },
   {
     "name": "remote",
