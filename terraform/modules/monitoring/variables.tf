@@ -29,6 +29,12 @@ variable "notify_endpoint" {
   type        = string
 }
 
+variable "paused" {
+  description = "Whether to pause the monitoring"
+  type        = bool
+  default     = false
+}
+
 locals {
   dummy_image = "asia-northeast1-docker.pkg.dev/mztn-seccamp-2024/containers-common/dummy:latest"
 

@@ -6,6 +6,7 @@ resource "google_cloud_scheduler_job" "invoke-crawler" {
   attempt_deadline = "120s"
   region           = "asia-northeast1"
   project          = var.project_id
+  paused           = var.paused
 
   retry_config {
     retry_count = 3
@@ -31,6 +32,7 @@ resource "google_cloud_scheduler_job" "invoke-detector" {
   attempt_deadline = "120s"
   region           = "asia-northeast1"
   project          = var.project_id
+  paused           = var.paused
 
   retry_config {
     retry_count = 3
