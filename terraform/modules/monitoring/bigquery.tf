@@ -7,6 +7,42 @@ resource "google_bigquery_dataset" "default" {
 resource "google_bigquery_table" "logs" {
   dataset_id = google_bigquery_dataset.default.dataset_id
   table_id   = "logs"
+
+  deletion_protection = false
+  schema              = <<EOF
+[
+  {
+    "name": "id",
+    "type": "STRING"
+  },
+  {
+    "name": "timestamp",
+    "type": "TIMESTAMP"
+  },
+  {
+    "name": "user",
+    "type": "STRING"
+  },
+  {
+    "name": "action",
+    "type": "STRING"
+  },
+  {
+    "name": "target",
+    "type": "STRING",
+    "nullable": true
+  },
+  {
+    "name": "success",
+    "type": "BOOL"
+  },
+  {
+    "name": "remote",
+    "type": "STRING"
+  }
+]
+EOF
+
 }
 
 resource "google_bigquery_table_iam_member" "owner_is_data_owner" {
