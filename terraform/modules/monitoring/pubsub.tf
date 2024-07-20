@@ -13,6 +13,6 @@ resource "google_pubsub_subscription" "notify" {
     oidc_token {
       service_account_email = google_service_account.notifier.email
     }
-    push_endpoint = "https://nounify-nxgezih6la-an.a.run.app/msg/seccamp2024"
+    push_endpoint = var.notify_endpoint
   }
 }

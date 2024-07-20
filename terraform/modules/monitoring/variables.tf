@@ -24,6 +24,11 @@ variable "owner" {
   type        = string
 }
 
+variable "notify_endpoint" {
+  description = "The endpoint to notify"
+  type        = string
+}
+
 locals {
   dummy_image = "asia-northeast1-docker.pkg.dev/mztn-seccamp-2024/containers-common/dummy:latest"
 
