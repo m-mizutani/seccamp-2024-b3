@@ -1,2 +1,3 @@
 .terraform*
 terraform/deploy.tf
+terraform/members.json
