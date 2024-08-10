@@ -2,3 +2,4 @@
 *.json
 *.csv
 !terraform/config.example.json
+.env
