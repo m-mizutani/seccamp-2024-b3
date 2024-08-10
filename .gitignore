@@ -1,4 +1,3 @@
 .terraform*
-terraform/deploy.tf
 terraform/*.json
 terraform/*.csv

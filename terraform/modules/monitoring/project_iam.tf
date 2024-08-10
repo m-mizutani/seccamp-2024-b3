@@ -4,7 +4,7 @@ locals {
   ]
 }
 
-resource "google_project_iam_member" "viewer" {
+resource "google_project_iam_member" "logging_viewer" {
   for_each = toset(local.view_roles)
 
   project = var.project_id
@@ -21,5 +21,11 @@ resource "google_project_iam_member" "detector_is_job_user" {
 resource "google_project_iam_member" "owner_is_job_user" {
   project = var.project_id
   role    = "roles/bigquery.jobUser"
+  member  = "user:${var.owner}"
+}
+
+resource "google_project_iam_member" "viewer" {
+  project = var.project_id
+  role    = var.viewer_role
   member  = "user:${var.owner}"
 }

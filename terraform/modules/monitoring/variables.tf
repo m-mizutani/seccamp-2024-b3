@@ -13,6 +13,16 @@ variable "common_repository" {
   type        = string
 }
 
+variable "common_storage" {
+  description = "The common storage"
+  type        = string
+}
+
+variable "viewer_role" {
+  description = "The viewer role"
+  type        = string
+}
+
 variable "use_dummy" {
   description = "Whether to use dummy image"
   type        = bool
