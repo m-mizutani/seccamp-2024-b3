@@ -5,6 +5,8 @@ locals {
 }
 
 resource "google_project_iam_member" "viewer" {
+  for_each = toset(local.view_roles)
+
   project = var.project_id
   role    = each.value
   member  = "user:${var.owner}"
