@@ -13,11 +13,6 @@ resource "google_service_account" "invoker" {
   display_name = "Cloud Run Invoker for ${var.id}"
 }
 
-resource "google_service_account" "scheduler" {
-  account_id   = "scheduler-${var.id}"
-  display_name = "Cloud Run scheduler for ${var.id}"
-}
-
 resource "google_service_account" "notifier" {
   account_id   = "notifier-${var.id}"
   display_name = "Cloud Run notifier for ${var.id}"
