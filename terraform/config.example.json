@@ -1,0 +1,11 @@
+{
+  "notify_endpoint": "https://nounify-xxx-an.a.run.app/msg/seccamp2024",
+  "members": [
+    {
+      "email": "mizutani@hey.com",
+      "id": "vermilion",
+      "use_dummy": false,
+      "paused": false
+    }
+  ]
+}
