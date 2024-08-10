@@ -1,6 +1,12 @@
+locals {
+  view_roles = [
+    "roles/logging.viewer",
+  ]
+}
+
 resource "google_project_iam_member" "viewer" {
   project = var.project_id
-  role    = "roles/viewer"
+  role    = each.value
   member  = "user:${var.owner}"
 }
 

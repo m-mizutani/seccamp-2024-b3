@@ -23,6 +23,12 @@ resource "google_pubsub_topic_iam_member" "notify" {
   member = "serviceAccount:${google_service_account.detector.email}"
 }
 
+resource "google_pubsub_topic_iam_member" "owner_is_viewer" {
+  topic  = google_pubsub_topic.notify.name
+  role   = "roles/pubsub.viewer"
+  member = "user:${var.owner}"
+}
+
 resource "google_pubsub_topic_iam_member" "owner_is_publisher" {
   topic  = google_pubsub_topic.notify.name
   role   = "roles/pubsub.publisher"
