@@ -84,6 +84,7 @@ func main() {
 		logger.Error("failed to create bigquery client", "error", err)
 		os.Exit(1)
 	}
+	defer bqClient.Close()
 
 	adaptors := &Adaptors{
 		httpClient: &http.Client{},
