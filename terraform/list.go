@@ -14,24 +14,24 @@ type Member struct {
 }
 
 func main() {
-	f, err := os.Open("members.json")
+	f, err := os.Open("config.json")
 	if err != nil {
 		panic(err)
 	}
 
 	defer f.Close()
 
-	type JsonData struct {
+	type Config struct {
 		Members []Member `json:"members"`
 	}
 
-	var data JsonData
-	err = json.NewDecoder(f).Decode(&data)
+	var cfg Config
+	err = json.NewDecoder(f).Decode(&cfg)
 	if err != nil {
 		panic(err)
 	}
 
-	for _, member := range data.Members {
+	for _, member := range cfg.Members {
 		// get sha256 hash of email
 		h := sha256.New()
 		h.Write([]byte(member.Email))
