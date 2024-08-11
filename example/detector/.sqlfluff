@@ -1,0 +1,7 @@
+[sqlfluff]
+templater = jinja
+dialect = bigquery
+sql_file_exts = .sql
+large_file_skip_byte_limit = 0
+
+exclude_rules = LT05, AM04

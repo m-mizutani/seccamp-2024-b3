@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PROJECT="mztn-seccamp-2024"
+ID=vermilion
+
+gcloud auth configure-docker asia-northeast1-docker.pkg.dev
+docker build -t detector --platform linux/amd64 .
+docker tag detector asia-northeast1-docker.pkg.dev/$PROJECT/containers-$ID/detector
+docker push asia-northeast1-docker.pkg.dev/$PROJECT/containers-$ID/detector
