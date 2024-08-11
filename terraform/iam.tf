@@ -31,5 +31,6 @@ resource "google_project_iam_custom_role" "custom-viewer" {
     "artifactregistry.repositories.get",
     "artifactregistry.locations.list",
     "artifactregistry.dockerimages.list",
+    "pubsub.topics.list",
   ]
 }
