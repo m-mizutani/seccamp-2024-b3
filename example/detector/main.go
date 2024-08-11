@@ -18,6 +18,7 @@ const (
 	projectID = "mztn-seccamp-2024"
 	dataSet   = "secmon_vermilion"
 	tableName = "logs"
+	topicName = "notify-vermilion"
 )
 
 var logger *slog.Logger
@@ -34,8 +35,16 @@ type BQClient struct {
 	client *bigquery.Client
 }
 
-func (bq *BQClient) Query(ctx context.Context, query string) (*bigquery.RowIterator, error) {
+func (bq *BQClient) Query(ctx context.Context, query string) (RowIterator, error) {
 	return bq.client.Query(query).Read(ctx)
+}
+
+type Topic struct {
+	topic *pubsub.Topic
+}
+
+func (t *Topic) Publish(ctx context.Context, msg *pubsub.Message) PublishResult {
+	return t.topic.Publish(ctx, msg)
 }
 
 func main() {
@@ -60,7 +69,7 @@ func main() {
 	ps.Topic("alert").Publish(ctx, &pubsub.Message{Data: []byte("Hello, World!")})
 	ifs := &Interfaces{
 		Inquirer:  &BQClient{client: bq},
-		Publisher: ps.Topic("notify-vermilion"),
+		Publisher: &Topic{topic: ps.Topic(topicName)},
 	}
 
 	if err := detect(ctx, ifs); err != nil {

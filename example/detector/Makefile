@@ -2,5 +2,5 @@ MOCK_GO=mock.go
 
 all: $(MOCK_GO)
 
-$(MOCK_GO): adapters.go
-	moq -out $(MOCK_GO) . HTTPClient Inserter
+$(MOCK_GO): interfaces.go
+	moq -out $(MOCK_GO) . Inquirer RowIterator Publisher PublishResult

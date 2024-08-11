@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go/bigquery v1.62.0
 	cloud.google.com/go/pubsub v1.40.0
 	github.com/m-mizutani/goerr v0.1.14
+	github.com/m-mizutani/gt v0.0.10
 	google.golang.org/api v0.188.0
 )
 
@@ -23,6 +24,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/flatbuffers v23.5.26+incompatible // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
