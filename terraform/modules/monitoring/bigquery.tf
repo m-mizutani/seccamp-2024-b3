@@ -76,11 +76,11 @@ resource "google_bigquery_table" "ioc" {
 EOF
 
   external_data_configuration {
-    source_uris = ["gs://mztn-seccamp-2024-public/ioc.csv"]
+    source_uris   = ["gs://mztn-seccamp-2024-public/ioc.csv"]
     source_format = "CSV"
-    autodetect = true
+    autodetect    = true
     csv_options {
-      quote = "\""
+      quote             = "\""
       skip_leading_rows = 1
     }
   }

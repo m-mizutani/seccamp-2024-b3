@@ -29,25 +29,25 @@ resource "google_pubsub_topic_iam_member" "owner_is_admin" {
   member = "user:${var.owner}"
 }
 
-resource "google_pubsub_topic" "test" {
+resource "google_pubsub_topic" "pull" {
   project = var.project_id
-  name    = "test-${var.id}"
+  name    = "pull-${var.id}"
 }
 
-resource "google_pubsub_subscription" "test" {
-  project              = var.project_id
-  name                 = "test-${var.id}"
-  topic                = google_pubsub_topic.test.name
+resource "google_pubsub_subscription" "pull" {
+  project = var.project_id
+  name    = "pull-${var.id}"
+  topic   = google_pubsub_topic.pull.name
 }
 
-resource "google_pubsub_topic_iam_member" "detector_is_test_publisher" {
-  topic  = google_pubsub_topic.test.name
+resource "google_pubsub_topic_iam_member" "detector_is_pull_publisher" {
+  topic  = google_pubsub_topic.pull.name
   role   = "roles/pubsub.publisher"
   member = "serviceAccount:${google_service_account.detector.email}"
 }
 
-resource "google_pubsub_topic_iam_member" "owner_is_test_admin" {
-  topic  = google_pubsub_topic.test.name
+resource "google_pubsub_topic_iam_member" "owner_is_pull_admin" {
+  topic  = google_pubsub_topic.pull.name
   role   = "roles/pubsub.admin"
   member = "user:${var.owner}"
 }
