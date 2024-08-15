@@ -7,7 +7,7 @@ resource "google_cloud_run_v2_job" "crawler" {
       containers {
         image = local.crawler_image
       }
-      timeout         = "20s"
+      timeout         = "30s"
       max_retries     = 0
       service_account = google_service_account.crawler.email
     }
@@ -23,7 +23,7 @@ resource "google_cloud_run_v2_job" "detector" {
       containers {
         image = local.detector_image
       }
-      timeout         = "20s"
+      timeout         = "30s"
       max_retries     = 0
       service_account = google_service_account.detector.email
     }
