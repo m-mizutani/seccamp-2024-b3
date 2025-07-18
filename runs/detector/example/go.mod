@@ -1,6 +1,6 @@
 module detector
 
-go 1.22.3
+go 1.23.0
 
 require (
 	cloud.google.com/go/bigquery v1.61.0
@@ -40,7 +40,7 @@ require (
 	golang.org/x/exp v0.0.0-20240716175740-e3f259677ff7 // indirect
 	golang.org/x/mod v0.19.0 // indirect
 	golang.org/x/net v0.27.0 // indirect
-	golang.org/x/oauth2 v0.21.0 // indirect
+	golang.org/x/oauth2 v0.27.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
